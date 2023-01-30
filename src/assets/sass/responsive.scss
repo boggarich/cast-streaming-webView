@@ -1,0 +1,38 @@
+@media screen and (max-width: 990px) {
+
+    .go-live-container {
+        overflow: hidden !important;
+    }
+
+    .video-player-container {
+        background-color: rgba(26, 26, 26, 0.7);
+        margin-bottom: 0px;
+        overflow: hidden !important;
+    }
+
+    .grid-3 {
+        display: flex;
+    }
+
+    .hidden-lg-up {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 991px) {
+
+    .hidden-sm-up {
+        display: none !important;
+    }
+
+    .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .hidden-lg-up {
+        display: block;
+    }
+
+}
