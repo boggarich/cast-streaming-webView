@@ -322,6 +322,8 @@ export default class ViewLive extends React.Component {
 
                                         <div className="video-player d-flex justify-content-center">
                                             <Video 
+
+                                                controls={ false }
                                                 id="video-player"
                                                 mp4={ process.env.PUBLIC_URL + '/assets/videos/test-video.mp4' } 
                                                 objectFit={'contain'}
@@ -510,6 +512,8 @@ export default class ViewLive extends React.Component {
 
                                         <div className="video-player d-flex justify-content-center">
                                             <Video 
+
+                                                controls={ false }
                                                 id="video-player"
                                                 mp4={ process.env.PUBLIC_URL + '/assets/videos/live-2.mp4' } 
                                                 objectFit={'contain'}
@@ -697,6 +701,7 @@ export default class ViewLive extends React.Component {
 
                                         <div className="video-player d-flex justify-content-center">
                                             <Video 
+                                                controls={ false }
                                                 id="video-player"
                                                 mp4={ process.env.PUBLIC_URL + '/assets/videos/pexels-polina-kovaleva-7089307.mp4' } 
                                                 objectFit={'contain'}
@@ -882,6 +887,8 @@ export default class ViewLive extends React.Component {
 
                                         <div className="video-player d-flex justify-content-center">
                                             <Video 
+                                            
+                                                controls={ false }
                                                 id="video-player"
                                                 mp4={ process.env.PUBLIC_URL + '/assets/videos/pexels-polina-kovaleva-7089307.mp4' } 
                                                 objectFit={'contain'}

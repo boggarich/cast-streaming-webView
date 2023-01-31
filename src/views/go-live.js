@@ -319,20 +319,11 @@ export default class GoLive extends React.Component {
 
                             <div className="video-player d-flex justify-content-center">
                                 <Video 
+                                    controls={ false }
                                     id="video-player"
-                                    mp4={ process.env.PUBLIC_URL + '/assets/videos/test-video.mp4' } 
+                                    mp4={ process.env.PUBLIC_URL + 'assets/videos/test-video.mp4' } 
                                     objectFit={'contain'}
                                 />
-                            </div>
-
-                            <div className='video-player-bg'>
-
-                                <Video 
-                                    id="video-player-bg"
-                                    mp4={ process.env.PUBLIC_URL + '/assets/videos/test-video.mp4' } 
-                                    objectFit={'cover'}
-                                />
-
                             </div>
 
                         </div>
