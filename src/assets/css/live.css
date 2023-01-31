@@ -163,7 +163,7 @@
   line-height: 18px;
 }
 .go-live-container .started-live-overlay .live-interactions .description + .see-more-btn, .view-live-container .started-live-overlay .live-interactions .description + .see-more-btn {
-  display: block;
+  display: none;
   position: absolute;
   top: 14px;
   right: 14px;
@@ -251,24 +251,6 @@
   height: 30.25vh;
   overflow-y: scroll;
   position: relative;
-}
-.go-live-container .started-live-overlay .live-interactions .comments::before, .view-live-container .started-live-overlay .live-interactions .comments::before {
-  content: "";
-  height: 30px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: linear-gradient(top to bottom, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0.1));
-}
-.go-live-container .started-live-overlay .live-interactions .comments::after, .view-live-container .started-live-overlay .live-interactions .comments::after {
-  content: "";
-  height: 30px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: green;
 }
 .go-live-container .started-live-overlay .live-interactions .comments > div:not(:last-child), .view-live-container .started-live-overlay .live-interactions .comments > div:not(:last-child) {
   margin-bottom: 0.625rem;

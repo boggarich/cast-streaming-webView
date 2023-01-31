@@ -1,23 +1,24 @@
 import $ from 'jquery';
 
-let isOverflown = () => {
+class CommonJs {
 
-    $('.has-show-more').each((index, el) => {
+    isOverflown = () => {
 
-        var truncatable = $(el).find('.truncatable');
-
-        console.log(truncatable[0].clientWidth)
-
-        // if( $(el)[0].clientWidth > truncatable[0].clientWidth ) {
-
-        //     console.log(truncatable.next('.see-more-btn').hide());
-
-        // };
-
-       
-
-    })
+        $('.truncatable p').each((index, el) => {
     
+            if( $(el)[0].scrollHeight > $(el)[0].clientHeight ) {
+    
+                $(el).parent('.truncatable')
+                .next('.see-more-btn').show()
+    
+            };
+    
+        })
+        
+    }
+
 }
 
-export default isOverflown;
+let commonObj = new CommonJs
+
+export default commonObj;

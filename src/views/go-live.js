@@ -3,7 +3,7 @@ import '../assets/sass/live.scss';
 import Video from 'react-responsive-video';
 import $ from 'jquery';
 import ActionSheet from '../components/action-sheet';
-import isOverflown from '../assets/js/common';
+import commonObj from '../assets/js/common';
 
 export default class GoLive extends React.Component {
 
@@ -14,6 +14,7 @@ export default class GoLive extends React.Component {
         this.selectChannelActionSheet = React.createRef()
 
         this.state = {
+            liveStarted: false,
             channelTwo: '2',
             channelOne: '1',
             selectedChannelRadioVal: '0',
@@ -29,6 +30,8 @@ export default class GoLive extends React.Component {
 
         $('.start-live-overlay').fadeOut(250);
         $('.started-live-overlay').fadeIn(250).css('display', 'flex');
+
+        this.setState({ liveStarted: true });
 
     }
 
@@ -68,9 +71,15 @@ export default class GoLive extends React.Component {
 
     }
 
+    componentDidUpdate() {
+
+        commonObj.isOverflown()
+
+    }
+
     componentDidMount() {
 
-        isOverflown(document.getElementsByClassName('truncatable'));
+        commonObj.isOverflown()
 
         var windowHeight = window.innerHeight;
 
@@ -82,16 +91,25 @@ export default class GoLive extends React.Component {
 
         $('.show-less-btn').on('click', (e) => {
 
-            $(e.currentTarget).parent('.expand-content-btn-wrapper')
-            .prev('.truncatable')
+            $(e.currentTarget).parent('.has-show-more')
+            .find('.truncatable')
             .removeClass('expanded');
+
+            setTimeout(() => {
+
+                $(e.currentTarget).parent('.has-show-more')
+                .find('.truncatable')
+                .addClass('clamped');
+
+            }, 250);
             
         });
 
         $('.see-more-btn').on('click', (e) => {
 
-            $(e.currentTarget).parent('.expand-content-btn-wrapper')
-            .prev('.truncatable')
+            $(e.currentTarget).parent('.has-show-more')
+            .find('.truncatable')
+            .removeClass('clamped')
             .addClass('expanded');
             
         });
@@ -184,18 +202,15 @@ export default class GoLive extends React.Component {
 
                                         <div className='position-relative has-show-more'>
 
-                                            <div className='truncatable description scrollbar-hidden'>
+                                            <div className='truncatable description scrollbar-hidden clamped'>
 
                                                 <h4 className='text-white f-12 fw-700'>Unity Music Concert Day 2</h4>
-                                                <p className='text-white f-10 fw-100'>This is the second day live stream of the Unity concert
-                                                </p>
+                                                <p className='text-white f-10 fw-100'>This is the second day live stream of the Unity concert</p>
 
                                             </div>
 
-                                            <div className='expand-content-btn-wrapper'>
-                                                <button className='see-more-btn'>See More</button>
-                                                <button className='show-less-btn'>Show less</button>
-                                            </div>
+                                            <button className='see-more-btn'>See More</button>
+                                            <button className='show-less-btn'>Show less</button>
                                             
                                         </div>
 

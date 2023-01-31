@@ -5,7 +5,7 @@ import $ from 'jquery';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ActionSheet from '../components/action-sheet';
 import Modal from 'react-bootstrap/Modal';
-import isOverflown from '../assets/js/common';
+import commonObj from '../assets/js/common';
 
 export default class ViewLive extends React.Component {
 
@@ -89,7 +89,7 @@ export default class ViewLive extends React.Component {
 
     componentDidMount() {
 
-        isOverflown();
+        commonObj.isOverflown();
 
         $('.show-less-btn').on('click', (e) => {
 
@@ -184,8 +184,8 @@ export default class ViewLive extends React.Component {
                                                                     <span className='ms-3 d-flex align-items-center'>
 
                                                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M6 6C7.38071 6 8.5 4.88071 8.5 3.5C8.5 2.11929 7.38071 1 6 1C4.61929 1 3.5 2.11929 3.5 3.5C3.5 4.88071 4.61929 6 6 6Z" fill="white" fill-opacity="0.8"/>
-                                                                            <path d="M5.99813 7.25C3.49312 7.25 1.45312 8.93 1.45312 11C1.45312 11.14 1.56312 11.25 1.70312 11.25H10.2931C10.4331 11.25 10.5431 11.14 10.5431 11C10.5431 8.93 8.50313 7.25 5.99813 7.25Z" fill="white" fill-opacity="0.8"/>
+                                                                            <path d="M6 6C7.38071 6 8.5 4.88071 8.5 3.5C8.5 2.11929 7.38071 1 6 1C4.61929 1 3.5 2.11929 3.5 3.5C3.5 4.88071 4.61929 6 6 6Z" fill="white" fillOpacity="0.8"/>
+                                                                            <path d="M5.99813 7.25C3.49312 7.25 1.45312 8.93 1.45312 11C1.45312 11.14 1.56312 11.25 1.70312 11.25H10.2931C10.4331 11.25 10.5431 11.14 10.5431 11C10.5431 8.93 8.50313 7.25 5.99813 7.25Z" fill="white" fillOpacity="0.8"/>
                                                                         </svg>
 
                                                                         <span className='ms-1 f-12'>40</span>
@@ -307,7 +307,7 @@ export default class ViewLive extends React.Component {
                                                 <img src={ process.env.PUBLIC_URL + "/assets/img/pexels-chris-3.png" } alt="human" style={{ 'height': '50px', 'width': '50px', 'borderRadius': '50%' }} />
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="12" cy="12" r="10" fill="white"/>
-                                                    <g clip-path="url(#clip0_4594_25519)">
+                                                    <g clipPath="url(#clip0_4594_25519)">
                                                     <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#FF0000"/>
                                                     </g>
                                                     <defs>
@@ -372,8 +372,8 @@ export default class ViewLive extends React.Component {
                                                                     <span className='ms-3 d-flex align-items-center'>
 
                                                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M6 6C7.38071 6 8.5 4.88071 8.5 3.5C8.5 2.11929 7.38071 1 6 1C4.61929 1 3.5 2.11929 3.5 3.5C3.5 4.88071 4.61929 6 6 6Z" fill="white" fill-opacity="0.8"/>
-                                                                            <path d="M5.99813 7.25C3.49312 7.25 1.45312 8.93 1.45312 11C1.45312 11.14 1.56312 11.25 1.70312 11.25H10.2931C10.4331 11.25 10.5431 11.14 10.5431 11C10.5431 8.93 8.50313 7.25 5.99813 7.25Z" fill="white" fill-opacity="0.8"/>
+                                                                            <path d="M6 6C7.38071 6 8.5 4.88071 8.5 3.5C8.5 2.11929 7.38071 1 6 1C4.61929 1 3.5 2.11929 3.5 3.5C3.5 4.88071 4.61929 6 6 6Z" fill="white" fillOpacity="0.8"/>
+                                                                            <path d="M5.99813 7.25C3.49312 7.25 1.45312 8.93 1.45312 11C1.45312 11.14 1.56312 11.25 1.70312 11.25H10.2931C10.4331 11.25 10.5431 11.14 10.5431 11C10.5431 8.93 8.50313 7.25 5.99813 7.25Z" fill="white" fillOpacity="0.8"/>
                                                                         </svg>
 
                                                                         <span className='ms-1 f-12'>40</span>
@@ -495,7 +495,7 @@ export default class ViewLive extends React.Component {
                                                 <img src={ process.env.PUBLIC_URL + "/assets/img/pexels-chris-3.png" } alt="human" style={{ 'height': '50px', 'width': '50px', 'borderRadius': '50%' }} />
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="12" cy="12" r="10" fill="white"/>
-                                                    <g clip-path="url(#clip0_4594_25519)">
+                                                    <g clipPath="url(#clip0_4594_25519)">
                                                     <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#FF0000"/>
                                                     </g>
                                                     <defs>
@@ -559,8 +559,8 @@ export default class ViewLive extends React.Component {
                                                                     <span className='ms-3 d-flex align-items-center'>
 
                                                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M6 6C7.38071 6 8.5 4.88071 8.5 3.5C8.5 2.11929 7.38071 1 6 1C4.61929 1 3.5 2.11929 3.5 3.5C3.5 4.88071 4.61929 6 6 6Z" fill="white" fill-opacity="0.8"/>
-                                                                            <path d="M5.99813 7.25C3.49312 7.25 1.45312 8.93 1.45312 11C1.45312 11.14 1.56312 11.25 1.70312 11.25H10.2931C10.4331 11.25 10.5431 11.14 10.5431 11C10.5431 8.93 8.50313 7.25 5.99813 7.25Z" fill="white" fill-opacity="0.8"/>
+                                                                            <path d="M6 6C7.38071 6 8.5 4.88071 8.5 3.5C8.5 2.11929 7.38071 1 6 1C4.61929 1 3.5 2.11929 3.5 3.5C3.5 4.88071 4.61929 6 6 6Z" fill="white" fillOpacity="0.8"/>
+                                                                            <path d="M5.99813 7.25C3.49312 7.25 1.45312 8.93 1.45312 11C1.45312 11.14 1.56312 11.25 1.70312 11.25H10.2931C10.4331 11.25 10.5431 11.14 10.5431 11C10.5431 8.93 8.50313 7.25 5.99813 7.25Z" fill="white" fillOpacity="0.8"/>
                                                                         </svg>
 
                                                                         <span className='ms-1 f-12'>40</span>
@@ -682,7 +682,7 @@ export default class ViewLive extends React.Component {
                                                 <img src={ process.env.PUBLIC_URL + "/assets/img/pexels-chris-3.png" } alt="human" style={{ 'height': '50px', 'width': '50px', 'borderRadius': '50%' }} />
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="12" cy="12" r="10" fill="white"/>
-                                                    <g clip-path="url(#clip0_4594_25519)">
+                                                    <g clipPath="url(#clip0_4594_25519)">
                                                     <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#FF0000"/>
                                                     </g>
                                                     <defs>
@@ -746,8 +746,8 @@ export default class ViewLive extends React.Component {
                                                                     <span className='ms-3 d-flex align-items-center'>
 
                                                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M6 6C7.38071 6 8.5 4.88071 8.5 3.5C8.5 2.11929 7.38071 1 6 1C4.61929 1 3.5 2.11929 3.5 3.5C3.5 4.88071 4.61929 6 6 6Z" fill="white" fill-opacity="0.8"/>
-                                                                            <path d="M5.99813 7.25C3.49312 7.25 1.45312 8.93 1.45312 11C1.45312 11.14 1.56312 11.25 1.70312 11.25H10.2931C10.4331 11.25 10.5431 11.14 10.5431 11C10.5431 8.93 8.50313 7.25 5.99813 7.25Z" fill="white" fill-opacity="0.8"/>
+                                                                            <path d="M6 6C7.38071 6 8.5 4.88071 8.5 3.5C8.5 2.11929 7.38071 1 6 1C4.61929 1 3.5 2.11929 3.5 3.5C3.5 4.88071 4.61929 6 6 6Z" fill="white" fillOpacity="0.8"/>
+                                                                            <path d="M5.99813 7.25C3.49312 7.25 1.45312 8.93 1.45312 11C1.45312 11.14 1.56312 11.25 1.70312 11.25H10.2931C10.4331 11.25 10.5431 11.14 10.5431 11C10.5431 8.93 8.50313 7.25 5.99813 7.25Z" fill="white" fillOpacity="0.8"/>
                                                                         </svg>
 
                                                                         <span className='ms-1 f-12'>40</span>
@@ -867,7 +867,7 @@ export default class ViewLive extends React.Component {
                                                 <img src={ process.env.PUBLIC_URL + "/assets/img/pexels-chris-3.png" } alt="human" style={{ 'height': '50px', 'width': '50px', 'borderRadius': '50%' }} />
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="12" cy="12" r="10" fill="white"/>
-                                                    <g clip-path="url(#clip0_4594_25519)">
+                                                    <g clipPath="url(#clip0_4594_25519)">
                                                     <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#FF0000"/>
                                                     </g>
                                                     <defs>
@@ -937,7 +937,7 @@ export default class ViewLive extends React.Component {
                                             <td>$ 1</td>
                                             <td>
                                                 <div className="form-check">
-                                                    <input className="form-check-input" type="radio" name="flexRadioDefault" value="1" checked={ this.state.selectedPlan == '1' } onChange={ this.handleSubscriptionPlanChange } />
+                                                    <input className="form-check-input" type="radio" name="flexRadioDefault" value="1" checked={ this.state.selectedPlan === '1' } onChange={ this.handleSubscriptionPlanChange } />
                                                 </div>
                                             </td>
                                         </tr>
