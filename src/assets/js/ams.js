@@ -29,8 +29,8 @@ export class AMS {
 
     appName='WebRTCAppEE'
     hostName="gudu.tv"
-    port="5080"
-    protocol="ws"
+    port="5443"
+    protocol="wss"
 
     debug=true
 

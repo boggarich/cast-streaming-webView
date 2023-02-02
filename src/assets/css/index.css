@@ -196,7 +196,7 @@ h4 {
   overflow: scroll;
 }
 .action-sheet-container .action-sheet-content.show .content {
-  max-height: max-content;
+  max-height: 100%;
   background: white;
   overflow: scroll;
 }
