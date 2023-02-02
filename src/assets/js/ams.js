@@ -181,6 +181,24 @@ export class AMS {
 			this.initWebRTCAdaptor(true, this.autoRepublishEnabled);
 		}
 	}
+	
+	sendData(data) {
+		try {
+			var iceState = this.webRTCAdaptor.iceConnectionState(this.streamId);
+			if (iceState != null && iceState != "failed" && iceState != "disconnected") {
+
+				this.webRTCAdaptor.sendData(this.streamId, data);
+			}
+			else {
+				alert("WebRTC publishing is not active. Please click Start Publishing first")
+			}
+		}
+		catch (exception) {
+			console.error(exception);
+			alert("Message cannot be sent. Make sure you've enabled data channel on server web panel");
+		}
+	}
+
 
     updateStreamStats(obj) {
 
