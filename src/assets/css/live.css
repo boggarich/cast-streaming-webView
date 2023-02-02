@@ -1,0 +1,352 @@
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.modal-backdrop.show {
+  opacity: 1 !important;
+}
+
+.modal.subscribe-modal {
+  display: flex !important;
+  justify-content: center !important;
+}
+.modal.subscribe-modal .modal-dialog {
+  width: 300px;
+  height: 313px;
+}
+.modal.subscribe-modal .modal-dialog .modal-content {
+  border-radius: 30px;
+}
+.modal.subscribe-modal .modal-dialog .modal-content button.btn {
+  width: 200px;
+}
+.modal.subscribe-modal .modal-dialog .modal-content button:last-child {
+  font-family: "PoppinsRegular";
+}
+
+.action-sheet-container.pay-to-watch-action-sheet .action-sheet-content .content {
+  border-radius: 50px 50px 0px 0px;
+}
+.action-sheet-container.pay-to-watch-action-sheet .action-sheet-content .content .body {
+  padding-top: 10px;
+}
+.action-sheet-container.pay-to-watch-action-sheet .action-sheet-content .content .body h1 {
+  font-weight: 700;
+  font-size: 48px;
+  color: #440B7D;
+  font-family: "PoppinsBold";
+  margin-bottom: 1rem;
+}
+.action-sheet-container.pay-to-watch-action-sheet .action-sheet-content .content .body p {
+  color: #440B7D;
+  font-size: 20px;
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem !important;
+}
+.action-sheet-container.select-subscription-plan-action-sheet .action-sheet-content .content {
+  border-radius: 50px 50px 0px 0px;
+}
+.action-sheet-container.select-subscription-plan-action-sheet .action-sheet-content .content .header {
+  padding-top: 5px;
+  padding-bottom: 8px;
+  padding-right: 30px;
+  padding-left: 25px;
+}
+.action-sheet-container.select-subscription-plan-action-sheet .action-sheet-content .content .header .header-md {
+  font-size: 24px;
+  margin-top: 24px;
+}
+.action-sheet-container.select-subscription-plan-action-sheet .action-sheet-content .content .body {
+  background: rgba(52, 20, 84, 0.05);
+  border-radius: 50px 50px 0px 0px;
+}
+.action-sheet-container.select-subscription-plan-action-sheet .action-sheet-content .content .body .form-check-input {
+  width: 30px;
+  height: 30px;
+  background: #D9D9D9;
+  border: 2px solid #341454;
+}
+.action-sheet-container.select-subscription-plan-action-sheet .action-sheet-content .content .body .plan-list {
+  padding-left: 0.325rem;
+}
+.action-sheet-container.select-subscription-plan-action-sheet table tr td {
+  color: #341454;
+  font-family: "PoppinsSemiBold";
+  font-size: 20px;
+  padding: 0.45rem 0.5rem;
+}
+.action-sheet-container.select-subscription-plan-action-sheet table tr td:nth-child(2) {
+  width: 70px;
+  text-align: center;
+}
+.action-sheet-container.select-subscription-plan-action-sheet table tr td:last-child {
+  align-items: end;
+}
+.action-sheet-container.select-subscription-plan-action-sheet table tr td:last-child > div {
+  display: flex;
+  justify-content: flex-end;
+}
+.action-sheet-container.select-subscription-plan-action-sheet table tr td:first-child {
+  width: 148px;
+}
+.action-sheet-container.select-channel-action-sheet .channel-list > div > div p {
+  margin-left: 32px;
+  margin-right: 12px;
+  max-width: 60%;
+  min-width: 70%;
+  width: 60%;
+  white-space: nowrap;
+}
+@media screen and (max-width: 400px) {
+  .action-sheet-container.select-channel-action-sheet .channel-list > div > div p {
+    max-width: 20% !important;
+    min-width: 20% !important;
+    width: 10% !important;
+    white-space: normal !important;
+  }
+}
+.action-sheet-container.select-channel-action-sheet .channel-list > div > div h4 {
+  width: 40%;
+  min-width: 40%;
+  max-width: 40%;
+}
+
+.go-live-container *, .view-live-container * {
+  font-style: normal;
+}
+.go-live-container .follow-caster-btn, .view-live-container .follow-caster-btn {
+  position: absolute;
+  background-color: transparent;
+  border: none !important;
+  right: 15px;
+  bottom: 115px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+.go-live-container .follow-caster-btn svg, .view-live-container .follow-caster-btn svg {
+  margin-top: -0.725rem;
+}
+.go-live-container .follow-caster-btn img, .view-live-container .follow-caster-btn img {
+  border: 2px solid #fff;
+  box-sizing: content-box;
+}
+.go-live-container .started-live-overlay, .view-live-container .started-live-overlay {
+  display: flex;
+}
+.go-live-container .started-live-overlay .live-interactions, .view-live-container .started-live-overlay .live-interactions {
+  padding: 10px 16px 47px;
+  position: relative;
+}
+.go-live-container .started-live-overlay .live-interactions .share-btn-wrapper, .view-live-container .started-live-overlay .live-interactions .share-btn-wrapper {
+  margin-right: -0.5rem;
+}
+.go-live-container .started-live-overlay .live-interactions .has-show-more, .view-live-container .started-live-overlay .live-interactions .has-show-more {
+  width: 78%;
+}
+.go-live-container .started-live-overlay .live-interactions .description, .view-live-container .started-live-overlay .live-interactions .description {
+  color: black;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis !important;
+  overflow: hidden;
+  white-space: normal;
+  line-height: 18px;
+  max-height: 1.8rem;
+  width: 78%;
+  transition: max-height 250ms ease-in-out;
+}
+.go-live-container .started-live-overlay .live-interactions .description.clamped, .view-live-container .started-live-overlay .live-interactions .description.clamped {
+  -webkit-line-clamp: 2;
+}
+.go-live-container .started-live-overlay .live-interactions .description p, .view-live-container .started-live-overlay .live-interactions .description p {
+  line-height: 18px;
+}
+.go-live-container .started-live-overlay .live-interactions .description + .see-more-btn, .view-live-container .started-live-overlay .live-interactions .description + .see-more-btn {
+  display: none;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+@media screen and (max-width: 414px) {
+  .go-live-container .started-live-overlay .live-interactions .description + .see-more-btn, .view-live-container .started-live-overlay .live-interactions .description + .see-more-btn {
+    right: 5px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .go-live-container .started-live-overlay .live-interactions .description + .see-more-btn, .view-live-container .started-live-overlay .live-interactions .description + .see-more-btn {
+    right: 0px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .go-live-container .started-live-overlay .live-interactions .description + .see-more-btn, .view-live-container .started-live-overlay .live-interactions .description + .see-more-btn {
+    right: -12px;
+  }
+}
+.go-live-container .started-live-overlay .live-interactions .description + .see-more-btn span, .view-live-container .started-live-overlay .live-interactions .description + .see-more-btn span {
+  margin-right: 8px;
+  font-weight: 400;
+}
+.go-live-container .started-live-overlay .live-interactions .description + .see-more-btn + .show-less-btn, .view-live-container .started-live-overlay .live-interactions .description + .see-more-btn + .show-less-btn {
+  display: none !important;
+  position: absolute;
+  top: 100%;
+  right: 0;
+}
+.go-live-container .started-live-overlay .live-interactions .description.expanded, .view-live-container .started-live-overlay .live-interactions .description.expanded {
+  max-height: 6.6rem;
+  -webkit-line-clamp: unset;
+  overflow: scroll;
+  line-height: 18px;
+  width: 78%;
+}
+.go-live-container .started-live-overlay .live-interactions .description.expanded + .see-more-btn, .view-live-container .started-live-overlay .live-interactions .description.expanded + .see-more-btn {
+  display: none !important;
+}
+.go-live-container .started-live-overlay .live-interactions .description.expanded + .see-more-btn + .show-less-btn, .view-live-container .started-live-overlay .live-interactions .description.expanded + .see-more-btn + .show-less-btn {
+  display: block !important;
+}
+.go-live-container .started-live-overlay .live-interactions > *, .view-live-container .started-live-overlay .live-interactions > * {
+  z-index: 2;
+  position: relative;
+}
+.go-live-container .started-live-overlay .live-interactions::after, .view-live-container .started-live-overlay .live-interactions::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, #000000 100%);
+  z-index: 1;
+  height: 80%;
+  width: 100%;
+  display: block;
+  filter: blur(50px);
+}
+.go-live-container .started-live-overlay .live-interactions input, .view-live-container .started-live-overlay .live-interactions input {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  border-color: rgba(0, 0, 0, 0.8);
+  height: 60px;
+  border: none;
+  width: 80%;
+  padding-left: 26px;
+  color: #fff;
+}
+.go-live-container .started-live-overlay .live-interactions input::-webkit-input-placeholder, .view-live-container .started-live-overlay .live-interactions input::-webkit-input-placeholder { /* Edge */
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 20px;
+}
+.go-live-container .started-live-overlay .live-interactions input:-ms-input-placeholder, .view-live-container .started-live-overlay .live-interactions input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 20px;
+}
+.go-live-container .started-live-overlay .live-interactions input::placeholder, .view-live-container .started-live-overlay .live-interactions input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 20px;
+}
+.go-live-container .started-live-overlay .live-interactions input:focus-visible, .view-live-container .started-live-overlay .live-interactions input:focus-visible {
+  outline: 0 !important;
+}
+.go-live-container .started-live-overlay .live-interactions .comments, .view-live-container .started-live-overlay .live-interactions .comments {
+  height: 30.25vh;
+  overflow-y: scroll;
+  position: relative;
+}
+.go-live-container .started-live-overlay .live-interactions .comments > div:not(:last-child), .view-live-container .started-live-overlay .live-interactions .comments > div:not(:last-child) {
+  margin-bottom: 0.625rem;
+}
+.go-live-container .started-live-overlay .live-interactions .profile-img, .view-live-container .started-live-overlay .live-interactions .profile-img {
+  height: 50px;
+  width: 50px;
+  margin-right: 0.325rem;
+}
+.go-live-container .started-live-overlay .live-interactions .profile-img + div h4, .view-live-container .started-live-overlay .live-interactions .profile-img + div h4 {
+  margin-bottom: 0.125rem;
+}
+.go-live-container .started-live-overlay .live-indicator span, .view-live-container .started-live-overlay .live-indicator span {
+  margin-right: 0.3925rem !important;
+  font-weight: 600;
+}
+.go-live-container .started-live-overlay .live-metrics, .view-live-container .started-live-overlay .live-metrics {
+  height: 29px;
+  display: flex;
+  align-items: center;
+  width: 90px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.go-live-container .started-live-overlay .live-metrics.viewer, .view-live-container .started-live-overlay .live-metrics.viewer {
+  height: fit-content !important;
+  width: fit-content !important;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 9px 15px 11px 13px;
+  height: 60px;
+}
+.go-live-container .started-live-overlay .live-metrics.viewer + .btn, .view-live-container .started-live-overlay .live-metrics.viewer + .btn {
+  margin-right: -0.325rem;
+}
+.go-live-container .started-live-overlay .live-metrics.viewer button.subscribe-btn, .view-live-container .started-live-overlay .live-metrics.viewer button.subscribe-btn {
+  color: #341454;
+  background-color: #fff !important;
+  border-radius: 5px;
+  width: 72px;
+  height: 20.57px;
+  font-size: 10px;
+  font-weight: 500 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  margin-top: -5px;
+}
+.go-live-container .started-live-overlay .live-metrics.viewer img, .view-live-container .started-live-overlay .live-metrics.viewer img {
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+}
+.go-live-container .started-live-overlay .live-metrics.viewer p, .view-live-container .started-live-overlay .live-metrics.viewer p {
+  color: #fff;
+}
+.go-live-container .started-live-overlay .live-metrics.viewer h4, .view-live-container .started-live-overlay .live-metrics.viewer h4 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+.go-live-container .started-live-overlay .live-metrics span, .view-live-container .started-live-overlay .live-metrics span {
+  color: #fff !important;
+  font-size: 10px;
+}
+.go-live-container .overlay, .view-live-container .overlay {
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+  grid-area: 1/1;
+  z-index: 2;
+}
+.go-live-container .start-live-overlay, .view-live-container .start-live-overlay {
+  display: flex;
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+}
+
+.infinite-scroll-component {
+  scroll-snap-type: y mandatory;
+  position: relative;
+  height: 100vh !important;
+  background-color: #000000;
+  overflow: scroll;
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+.infinite-scroll-component::-webkit-scrollbar {
+  display: none !important;
+}
+.infinite-scroll-component > div.view-live-container {
+  position: relative;
+  scroll-snap-stop: always;
+  scroll-snap-align: start;
+  width: 100%;
+  height: 100%;
+}
