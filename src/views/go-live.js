@@ -19,6 +19,10 @@ export default class GoLive extends React.Component {
         this.selectChannelActionSheet = React.createRef()
 
         this.state = {
+            streamDetails: {
+                title: '',
+                description: ''
+            },
             ams: {},
             authBearer: '',
             userChannels: [],
@@ -63,9 +67,7 @@ export default class GoLive extends React.Component {
             }
         }).then((response) => {
 
-            console.log(response);
-
-            this.setState({ userChannels: response });
+            this.setState({ userChannels: response.data });
 
         })
 
@@ -81,20 +83,38 @@ export default class GoLive extends React.Component {
 
         // this.setState({ userPic: userPic });
 
+        
         this.setState({ authBearer: authBearer });
 
     }
 
     selectChannel = () => {
 
-        this.selectChannelActionSheet.hideActionSheet();
+        axios({
+            method: 'post',
+            url: apis.setLiveDetails,
+            headers: {
+                'Authorization': 'Bearer ' + this.state.authBearer
+            },
+            data: {
+                channel_id: this.state.selectedChannel,
+                live_title: this.state.liveTitle,
+                live_description: this.state.liveDescription
+            }
+        }).then((response) => {
 
-        $('.start-live-overlay').fadeOut(250);
-        $('.started-live-overlay').fadeIn(250).css('display', 'flex');
+            this.setState({ streamDetails: response.data.data });
 
-        this.setState({ liveStarted: true });
+            this.goLive( response.data.data.stream_id );
 
-        this.goLive(null);
+            this.selectChannelActionSheet.hideActionSheet();
+
+            $('.start-live-overlay').fadeOut(250);
+            $('.started-live-overlay').fadeIn(250).css('display', 'flex');
+
+            this.setState({ liveStarted: true });
+
+        })
 
     }
 
@@ -148,6 +168,8 @@ export default class GoLive extends React.Component {
     }
 
     componentDidMount() {
+
+        this.getUserData();
 
         this.initAMS();
 
@@ -276,8 +298,8 @@ export default class GoLive extends React.Component {
 
                                             <div className='truncatable description scrollbar-hidden clamped'>
 
-                                                <h4 className='text-white f-12 fw-700'>Unity Music Concert Day 2</h4>
-                                                <p className='text-white f-10 fw-100'>This is the second day live stream of the Unity concert</p>
+                                                <h4 className='text-white f-12 fw-700'>{ this.state.streamDetails.title }</h4>
+                                                <p className='text-white f-10 fw-100'>{ this.state.streamDetails.description }</p>
 
                                             </div>
 
@@ -421,33 +443,31 @@ export default class GoLive extends React.Component {
                         
                         <div className='channel-list'>
 
-                            <div className='d-flex justify-content-between align-items-center mb-4'>
+                            {
 
-                                <div className='d-flex align-items-center'>
-                                    <img src={ this.state.userPic } alt="human" style={{ width: '52px', height: '52px', borderRadius: '10px' }}/>
-                                    <h4 className='fw-600 ms-3 f-12 text-truncated'>Kojo Mills Travels</h4>
-                                    <p className='fw-500 f-12 text-truncated'>1.5 K Subscribers</p>
-                                </div>
+                                this.state.userChannels.map((userChannel) => {
 
-                                <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" value="1" checked={ this.state.selectedChannel == '1' } onChange={ this.handleChannelChange } />
-                                </div>
+                                    return(
 
-                            </div>
+                                        <div className='d-flex justify-content-between align-items-center mb-4'>
 
-                            <div className='d-flex justify-content-between align-items-center mb-4'>
+                                            <div className='d-flex align-items-center'>
+                                                <img src={ this.state.userPic } alt="human" style={{ width: '52px', height: '52px', borderRadius: '10px' }}/>
+                                                <h4 className='fw-600 ms-3 f-12 text-truncated'>{ userChannel.name }</h4>
+                                                <p className='fw-500 f-12 text-truncated'>{ userChannel.subscriptions_count } Subscribers</p>
+                                            </div>
+            
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="radio" name="flexRadioDefault" value={ userChannel.id } checked={ this.state.selectedChannel == userChannel.id } onChange={ this.handleChannelChange } />
+                                            </div>
+            
+                                        </div>
+                                                                            
+                                    )
 
-                                <div className='d-flex align-items-center'>
-                                    <img src={ this.state.userPic } alt="human" style={{ width: '52px', height: '52px', borderRadius: '10px' }} />
-                                    <h4 className='fw-600 ms-3 f-12 text-truncated'>Music by  Kojo Mills</h4>
-                                    <p className='fw-500 f-12 text-truncated'>1.5 K Subscribers</p>
-                                </div>
+                                })
 
-                                <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" value="2" checked={ this.state.selectedChannel == '2' } onChange={ this.handleChannelChange } />
-                                </div>
-
-                            </div>
+                            }
 
                         </div>
 

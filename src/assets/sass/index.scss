@@ -211,10 +211,13 @@ h4 {
         width: 100%;
         height: 100%;  
         justify-self: end;
+        overflow: scroll;
 
         &.show {
             .content {
-                max-height: 100%;
+                max-height: max-content;
+                background: white;
+                overflow: scroll;
             }
         }
         
