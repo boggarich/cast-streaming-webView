@@ -274,7 +274,8 @@ h4 {
             height: 100%;
 
             @media screen and (max-width: 480px) {
-                object-fit: fill;
+                object-fit: cover;
+                background-position: center;
             }
         }
     }

@@ -4,6 +4,11 @@ import Video from 'react-responsive-video';
 import $ from 'jquery';
 import ActionSheet from '../components/action-sheet';
 import commonObj from '../assets/js/common';
+import axios from 'axios';
+
+import urls, { apis } from '../assets/js/apis'
+import cast from '../assets/js/cast'
+import { AMS } from '../assets/js/ams'
 
 export default class GoLive extends React.Component {
 
@@ -14,6 +19,13 @@ export default class GoLive extends React.Component {
         this.selectChannelActionSheet = React.createRef()
 
         this.state = {
+            ams: {},
+            authBearer: '',
+            userChannels: [],
+            userPic: process.env.PUBLIC_URL + "/assets/img/pexels-creation-hill.png",
+            userName: '',
+            liveDescription: '',
+            liveTitle: '',
             liveStarted: false,
             channelTwo: '2',
             channelOne: '1',
@@ -21,6 +33,55 @@ export default class GoLive extends React.Component {
             selectedChannel: "",
             channelSelected: false
         }
+
+    }
+
+    goLive = (id) => {
+
+        this.state.ams.startStream(id);
+
+    }
+
+    initAMS = () => {
+
+        const ams = new AMS({
+            'videoId': 'video-player',
+            'switch_button': 'switch_button'
+        });
+        
+        this.setState({ ams: ams });
+
+    }
+
+    getUserChannels = () => {
+
+        axios({
+            method: 'get',
+            url: apis.getUserChannels,
+            headers: {
+                'Authorization': 'Bearer ' + this.state.authBearer
+            }
+        }).then((response) => {
+
+            console.log(response);
+
+            this.setState({ userChannels: response });
+
+        })
+
+    }
+
+    getUserData = () => {
+
+        let params = new URLSearchParams(document.location.search);
+
+        let authBearer = params.get("token");
+
+        // let userPic = params.get("user_pic");
+
+        // this.setState({ userPic: userPic });
+
+        this.setState({ authBearer: authBearer });
 
     }
 
@@ -32,6 +93,8 @@ export default class GoLive extends React.Component {
         $('.started-live-overlay').fadeIn(250).css('display', 'flex');
 
         this.setState({ liveStarted: true });
+
+        this.goLive(null);
 
     }
 
@@ -54,8 +117,14 @@ export default class GoLive extends React.Component {
 
     addLiveTitle = () => {
 
-        this.titleActionSheet.hideActionSheet();
-        this.selectChannelActionSheet.showActionSheet();
+        if( this.state.liveDescription && this.state.liveTitle ) {
+        
+            this.getUserData();
+
+            this.titleActionSheet.hideActionSheet();
+            this.selectChannelActionSheet.showActionSheet();
+
+        }
 
     }
 
@@ -78,6 +147,8 @@ export default class GoLive extends React.Component {
     }
 
     componentDidMount() {
+
+        this.initAMS();
 
         commonObj.isOverflown()
 
@@ -296,7 +367,7 @@ export default class GoLive extends React.Component {
                                             <path d="M17.3552 19.7124L10.2842 12.6413L3.21311 19.7124L0.85609 17.3554L7.92716 10.2843L0.85609 3.21325L3.21311 0.856224L10.2842 7.92729L17.3552 0.856224L19.7123 3.21325L12.6412 10.2843L19.7123 17.3554L17.3552 19.7124Z" fill="white"/>
                                         </svg>
                                     </button>
-                                    <button className='btn'>
+                                    <button className='btn' id="switch_button">
                                         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fillRule="evenodd" clipRule="evenodd" d="M0.652663 14.4207C1.28966 14.4905 2.82196 14.2671 3.08576 14.1217C2.92926 11.4972 3.39616 9.59996 4.62526 7.72236C7.00146 4.09236 11.4742 2.31066 15.785 3.63686C16.834 3.95966 17.7508 4.42436 18.5127 4.95646C19.945 5.95686 19.6514 5.90496 20.5493 6.86406L16.5885 6.89116L16.5918 9.38526L24.0124 9.37666L24.0165 2.00596C23.5559 1.88266 21.9998 1.88366 21.535 2.00426L21.5363 4.16696C21.3033 4.04556 21.3505 4.09006 21.1419 3.89606C15.576 -1.28084 6.43306 0.00346071 2.31306 6.69726C1.32506 8.30236 0.017563 12.134 0.652763 14.4206L0.652663 14.4207Z" fill="white"/>
                                             <path fillRule="evenodd" clipRule="evenodd" d="M4.26394 21.9832C4.80204 22.2417 6.59614 24.4962 10.6765 25.2293C13.46 25.7295 16.5053 25.2108 18.6584 24.0287C21.7374 22.3383 24.0892 19.4931 24.9053 16.042C25.1454 15.0268 25.4616 12.7485 25.1462 11.7463C24.8727 11.7232 23.0835 11.8474 22.7205 12.0476C22.8516 14.6063 22.3024 16.7584 21.1407 18.515C20.2314 19.89 18.6308 21.4087 16.7829 22.1489C13.4653 23.4776 10.1816 23.1486 7.24254 21.1589C5.84254 20.2111 5.61604 19.5732 5.25834 19.2656L9.20894 19.2186L9.20824 16.7706L1.77344 16.7649L1.78874 24.2008L4.26124 24.1458L4.26414 21.9832H4.26394Z" fill="white"/>
@@ -318,12 +389,17 @@ export default class GoLive extends React.Component {
                             </div>
 
                             <div className="video-player d-flex justify-content-center">
-                                <Video 
+
+                                {/* <Video 
+                                   autoPlay={ true }
                                     controls={ false }
                                     id="video-player"
-                                    mp4={ process.env.PUBLIC_URL + 'assets/videos/test-video.mp4' } 
                                     objectFit={'contain'}
-                                />
+                                    playsInline={ true }
+                                /> */}
+
+                                <video id="video-player" autoPlay playsInline></video>
+
                             </div>
 
                         </div>
@@ -347,7 +423,7 @@ export default class GoLive extends React.Component {
                             <div className='d-flex justify-content-between align-items-center mb-4'>
 
                                 <div className='d-flex align-items-center'>
-                                    <img src={ process.env.PUBLIC_URL + "/assets/img/pexels-creation-hill.png" } alt="human" style={{ width: '52px', height: '52px', borderRadius: '10px' }}/>
+                                    <img src={ this.state.userPic } alt="human" style={{ width: '52px', height: '52px', borderRadius: '10px' }}/>
                                     <h4 className='fw-600 ms-3 f-12 text-truncated'>Kojo Mills Travels</h4>
                                     <p className='fw-500 f-12 text-truncated'>1.5 K Subscribers</p>
                                 </div>
@@ -361,7 +437,7 @@ export default class GoLive extends React.Component {
                             <div className='d-flex justify-content-between align-items-center mb-4'>
 
                                 <div className='d-flex align-items-center'>
-                                    <img src={ process.env.PUBLIC_URL + "/assets/img/pexels-creation-hill.png" } alt="human" style={{ width: '52px', height: '52px', borderRadius: '10px' }} />
+                                    <img src={ this.state.userPic } alt="human" style={{ width: '52px', height: '52px', borderRadius: '10px' }} />
                                     <h4 className='fw-600 ms-3 f-12 text-truncated'>Music by  Kojo Mills</h4>
                                     <p className='fw-500 f-12 text-truncated'>1.5 K Subscribers</p>
                                 </div>
@@ -375,7 +451,7 @@ export default class GoLive extends React.Component {
                         </div>
 
                         
-                        <button className='btn btn-violet mb-4 mt-4' id="selectChannelBtn" disabled={ !channelSelected } onClick={this.selectChannel} >Done</button>
+                        <button className='btn btn-violet mb-4 mt-4' id="selectChannelBtn" disabled={ !channelSelected } onClick={ this.selectChannel } >Done</button>
 
                     </div>
 
@@ -387,14 +463,14 @@ export default class GoLive extends React.Component {
                 >
                     
                         <div className='mb-5 mt-3'>
-                            <input className='form-control' type="text" placeholder="Enter a title for your live" />
+                            <input className='form-control' type="text" placeholder="Enter a title for your live" value={ this.state.title } onChange={ (evnt) =>  this.setState({ liveTitle: evnt.currentTarget.value }) }/>
                         </div>
 
                         <div className='mb-5'>
-                            <textarea className='form-control' rows={3} placeholder="Enter a description for your live" />
+                            <textarea className='form-control' rows={3} placeholder="Enter a description for your live" value={ this.state.description } onChange={ (evnt) => this.setState({ liveDescription: evnt.currentTarget.value }) } />
                         </div> 
 
-                        <button className='btn btn-violet mb-4' id="addLiveTitleBtn" onClick={this.addLiveTitle} >Done</button>
+                        <button className='btn btn-violet mb-4' id="addLiveTitleBtn" onClick={ this.addLiveTitle } >Done</button>
 
                 </ActionSheet>
 

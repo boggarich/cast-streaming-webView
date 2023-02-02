@@ -240,7 +240,8 @@ h4 {
 }
 @media screen and (max-width: 480px) {
   .video-player-container .video-player video {
-    object-fit: fill;
+    object-fit: cover;
+    background-position: center;
   }
 }
 
