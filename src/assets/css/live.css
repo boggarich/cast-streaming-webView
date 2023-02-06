@@ -88,6 +88,13 @@
 .action-sheet-container.select-subscription-plan-action-sheet table tr td:first-child {
   width: 148px;
 }
+.action-sheet-container.select-channel-action-sheet .channel-list > div {
+  position: relative;
+}
+.action-sheet-container.select-channel-action-sheet .channel-list > div > div.form-check {
+  position: absolute;
+  right: 0;
+}
 .action-sheet-container.select-channel-action-sheet .channel-list > div > div p {
   margin-left: 32px;
   margin-right: 12px;
@@ -105,7 +112,7 @@
   }
 }
 .action-sheet-container.select-channel-action-sheet .channel-list > div > div h4 {
-  width: 40%;
+  width: 100px;
   min-width: 40%;
   max-width: 40%;
 }

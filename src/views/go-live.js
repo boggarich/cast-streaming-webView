@@ -5,10 +5,10 @@ import $ from 'jquery';
 import ActionSheet from '../components/action-sheet';
 import commonObj from '../assets/js/common';
 import axios from 'axios';
+import Comments from '../components/comments';
 
 import urls, { apis } from '../assets/js/apis'
 import cast from '../assets/js/cast'
-import { AMS } from '../assets/js/ams'
 
 export default class GoLive extends React.Component {
 
@@ -19,9 +19,33 @@ export default class GoLive extends React.Component {
         this.selectChannelActionSheet = React.createRef()
 
         this.state = {
+            comments: [
+                {
+                    userPic: process.env.PUBLIC_URL + "/assets/img/pexels-chris.png",
+                    username: 'Grace Catering',
+                    comment: 'Wow, great recipe',
+                },
+                {
+                    userPic: process.env.PUBLIC_URL + "/assets/img/pexels-chris-1.png",
+                    username: 'Raja Mo',
+                    comment: 'My girlfriend will love this',
+                },
+                {
+                    userPic: process.env.PUBLIC_URL + "/assets/img/pexels-chris-2.png",
+                    username: "Ohemaa's Kitchen",
+                    comment: 'Thanks for Joining Guyss!... Please Like!!',
+                },
+                {
+                    userPic: process.env.PUBLIC_URL + "/assets/img/pexels-chris-3.png",
+                    username: 'Kris Mosh',
+                    comment: "I'm learning a lot today.",
+                },
+            ],
+            comment: '',
             streamDetails: {
                 title: '',
-                description: ''
+                description: '',
+                stream_id: ''
             },
             ams: {},
             authBearer: '',
@@ -40,20 +64,20 @@ export default class GoLive extends React.Component {
 
     }
 
-    goLive = (id) => {
+    addComment = (evnt) => {
 
-        this.state.ams.startStream(id);
+        commonObj.addComment(evnt, this)
+        .then((result) => {
+
+            console.log(result);
+
+        });
 
     }
 
-    initAMS = () => {
+    goLive = (id) => {
 
-        const ams = new AMS({
-            'videoId': 'video-player',
-            'switch_button': 'switch_button'
-        });
-        
-        this.setState({ ams: ams });
+        this.state.ams.startStream(id);
 
     }
 
@@ -70,21 +94,6 @@ export default class GoLive extends React.Component {
             this.setState({ userChannels: response.data });
 
         })
-
-    }
-
-    getUserData = () => {
-
-        let params = new URLSearchParams(document.location.search);
-
-        let authBearer = params.get("token");
-
-        // let userPic = params.get("user_pic");
-
-        // this.setState({ userPic: userPic });
-
-        
-        this.setState({ authBearer: authBearer });
 
     }
 
@@ -139,7 +148,7 @@ export default class GoLive extends React.Component {
 
         if( this.state.liveDescription && this.state.liveTitle ) {
         
-            this.getUserData();
+            commonObj.getUserData(this);
             this.getUserChannels();
 
             this.titleActionSheet.hideActionSheet();
@@ -169,9 +178,9 @@ export default class GoLive extends React.Component {
 
     componentDidMount() {
 
-        this.getUserData();
+        commonObj.getUserData(this);
 
-        this.initAMS();
+        commonObj.initAMS(this);
 
         commonObj.isOverflown()
 
@@ -308,53 +317,10 @@ export default class GoLive extends React.Component {
                                             
                                         </div>
 
-                                        <div className='my-3 comments scrollbar-hidden'>
-                                            <div className='d-flex align-items-center'>
-                                                <img className="profile-img" src={ process.env.PUBLIC_URL + "/assets/img/pexels-chris.png" } alt="human"/>
-                                                <div className='mt-2'>
-                                                    <h4 className='f-12 fw-600 white-muted-low'>Grace Catering</h4>
-                                                    <p className='f-10 fw-500 white-muted-high'>Wow, great recipe</p>
-                                                </div>
-                                            </div>
-                                            <div className='d-flex align-items-center'>
-                                                <img className="profile-img" src={ process.env.PUBLIC_URL + "/assets/img/pexels-chris-1.png" } alt="human"/>
-                                                <div>
-                                                    <h4 className='f-12 fw-600 white-muted-low'>Raja Mo</h4>
-                                                    <p className='f-10 fw-500 white-muted-high'>My girlfriend will love this</p>
-                                                </div>
-                                            </div>
-                                            <div className='d-flex align-items-center'>
-                                                <img className="profile-img" src={ process.env.PUBLIC_URL + "/assets/img/pexels-chris-2.png" } alt="human"/>
-                                                <div>
-                                                    <h4 className='f-12 fw-600 white-muted-low'>Ohemaa's Kitchen <span>Caster</span></h4>
-                                                    <p className='f-10 fw-500 white-muted-high'>Thanks for Joining Guyss!... Please Like!!</p>
-                                                </div>
-                                            </div>
-                                            <div className='d-flex align-items-center'>
-                                                <img className="profile-img" src={ process.env.PUBLIC_URL + "/assets/img/pexels-chris-3.png" } alt="human"/>
-                                                <div>
-                                                    <h4 className='f-12 fw-600 white-muted-low'>Kris Mosh</h4>
-                                                    <p className='f-10 fw-500 white-muted-high'>I'm learning a lot today.</p>
-                                                </div>
-                                            </div>
-                                            <div className='d-flex align-items-center'>
-                                                <img className="profile-img" src={ process.env.PUBLIC_URL + "/assets/img/pexels-chris-3.png" } alt="human"/>
-                                                <div>
-                                                    <h4 className='f-12 fw-600 white-muted-low'>Kris Mosh</h4>
-                                                    <p className='f-10 fw-500 white-muted-high'>I'm learning a lot today.</p>
-                                                </div>
-                                            </div>
-                                            <div className='d-flex align-items-center'>
-                                                <img className="profile-img" src={ process.env.PUBLIC_URL + "/assets/img/pexels-chris-3.png" } alt="human"/>
-                                                <div>
-                                                    <h4 className='f-12 fw-600 white-muted-low'>Kris Mosh</h4>
-                                                    <p className='f-10 fw-500 white-muted-high'>I'm learning a lot today.</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <Comments comments={ this.state.comments } />
 
                                         <div className='d-flex justify-content-between align-items-center'>
-                                            <input type="text" placeholder='Comment' className='comment'/>
+                                            <input type="text" placeholder='Comment' className='comment' onChange={ (evnt) => this.setState({ comment: evnt.currentTarget.value }) } onKeyUp={ (evnt) => this.addComment(evnt) } />
                                             <div className='share-btn-wrapper'>
                                                 <button className='btn'>
                                                     <svg width="30" height="34" viewBox="0 0 30 34" fill="none" xmlns="http://www.w3.org/2000/svg">

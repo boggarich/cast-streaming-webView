@@ -146,6 +146,10 @@ textarea {
   border-radius: 10px;
   padding: 0.5rem 1.25rem;
 }
+.form-control:focus {
+  border-color: #B7B7B7 !important;
+  box-shadow: none !important;
+}
 .form-control::-webkit-input-placeholder { /* Edge */
   color: rgba(0, 0, 0, 0.5);
   font-size: 14px;
@@ -193,7 +197,8 @@ h4 {
   width: 100%;
   height: 100%;
   justify-self: end;
-  overflow: scroll;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
 }
 .action-sheet-container .action-sheet-content.show .content {
   max-height: 100%;

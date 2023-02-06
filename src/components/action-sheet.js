@@ -112,9 +112,9 @@ export default class ActionSheet extends React.Component {
             <div className={ 'action-sheet-container ' + this.props.className } ref={el => this.actionSheet = el}>
 
                 <div className='action-sheet-bg'></div>
-                <div className='action-sheet-content d-flex flex-column justify-content-end'>
+                <div className='action-sheet-content d-flex flex-column justify-content-end scrollbar-hidden'>
 
-                    <div className='content'>
+                    <div className='content scrollbar-hidden'>
 
                         <div className='header d-flex justify-content-between align-items-center'>
 

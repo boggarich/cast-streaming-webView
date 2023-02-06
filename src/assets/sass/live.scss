@@ -144,7 +144,14 @@
         .channel-list {
 
             > div {
+                position: relative;
+
                 > div {
+
+                    &.form-check {
+                        position: absolute;
+                        right: 0;
+                    }
 
                     p {
                         margin-left: 32px;
@@ -164,7 +171,7 @@
                     }
 
                     h4 {
-                        width: 40%;
+                        width: 100px;
                         min-width: 40%;
                         max-width: 40%;
                     }
